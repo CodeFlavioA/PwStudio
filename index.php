@@ -1,3 +1,6 @@
+<?php 
+include 'backend/databasecon.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,15 +33,19 @@
 				$EMAIL = $_POST["email"];
 				$opciones = [
                     'cost' => 11,
-                ];
-				if($Cx = mysqli_connect("127.0.0.1","root","","bluelabs")){
+				];
+				
+				if(true){
 					$Query = "SELECT * FROM usuarios WHERE Email = '$EMAIL'"; 
 					if($reg = mysqli_query($Cx,$Query)){
 						while($r = mysqli_fetch_array($reg)){
 							if(password_verify($PASS,$r[2])){
+								echo "pass confirmada";
 								session_start(); 
 								$_SESSION["usuario"] = $EMAIL;
 								header("location: PartyHard/");
+							}else{
+								echo "<script>alert(\"Datos incorrectos\")</script>";
 							}
 						}
 					}else

@@ -1,4 +1,5 @@
 <?php
+include 'databasecon.php';
 //SE RECIBE ENCRIPTADO DE POST 
 
 //DATOS DE REGISTRO
@@ -25,7 +26,6 @@ if(isset($_GET["xtya"])){
                     //HACER CONSULTA AL SERVIDOR Y TRAERE LOS DATOS DEL SERVIDOR
                     echo "xtyk verificado";
                     $KEY = $_GET["xtka"];
-                    $Cx = mysqli_connect("127.0.0.1", "root", "", "bluelabs");
                     $Query  = "SELECT * FROM usuarios WHERE RegisterKey  = '$KEY'";
                     echo "<br>".$Query; 
                     if($reg = mysqli_query($Cx, $Query)){
@@ -83,10 +83,9 @@ if(isset($_GET["xtya"])){
                     }
                     require_once 'Email.php'; 
                     echo $cadena; 
-                    $Cx = mysqli_connect("127.0.0.1", "root", "", "bluelabs");
                     if($Cx){
                         echo "conexion realizada";
-                        $Query = "INSERT INTO usuarios VALUES('$Email','$cadena','','0')";
+                        $Query = "INSERT INTO usuarios VALUES('$Email','$cadena','','0','')";
                         if(mysqli_query($Cx,$Query)){
                             echo "query dada";
                             session_start();
@@ -120,7 +119,6 @@ if(isset($_GET["xtya"])){
                     'cost' => 11,
                 ];
                 $PASSCR =  password_hash($PASS, PASSWORD_BCRYPT, $opciones);
-                $Cx = mysqli_connect("127.0.0.1", "root", "", "bluelabs");
                 $Query = "UPDATE usuarios SET PasswordH = '$PASSCR',validate = '1' WHERE RegisterKey ='$KEY'";
                 if(mysqli_query($Cx,$Query)){
                     echo "Query echo $PASSCR";

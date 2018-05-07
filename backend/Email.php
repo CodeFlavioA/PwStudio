@@ -20,7 +20,7 @@ try {
     $mail->IsHTML(true); // El correo se envía como HTML 
     $mail->Subject = "COMPLETA TU REGISTRO"; // Este es el titulo del email. 
     $body = "Completa tu registro
-    http://localhost/StudioPass/backend/PreParty/Registro.php?xtka=$cadena&xtyb=777&xtya=2"; 
+    http://localhost/StudioPass/LabFinal/backend/Registro.php?xtka=$cadena&xtyb=777&xtya=2"; 
     echo "ok4";
     $mail->Body = $body; // Mensaje a enviar. $exito = $mail->Send(); // Envía el correo.
     #if($mail->send()){ 

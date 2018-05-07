@@ -1,4 +1,5 @@
 <?php
+include '../backend/databasecon.php' ;
 session_start(); 
 ?>
 <!DOCTYPE html>
@@ -98,7 +99,6 @@ session_start();
         </div>
         <div class='row line-passwords center-xs'>
                 <?php
-                 $Cx = mysqli_connect("localhost","root","","bluelabs");
                  $Query = "SELECT * FROM cuentas WHERE usuario = '".$_SESSION["usuario"]."'";
                  if($reg = mysqli_query($Cx,$Query)){
                     $TotalRegistros = mysqli_num_rows($reg);
