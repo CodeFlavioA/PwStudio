@@ -1,0 +1,80 @@
+!!!5
+%html
+    %head
+        %meta{name:"description", content:"Come rico en el mejor restaurante de la ciudas" }
+        %meta{name: "viewport",content:"width=device-width, initial-scale=1"}
+        %meta{charset: "utf-8"}
+        %link{href:"https://fonts.googleapis.com/css?family=Raleway:300,400", rel:"stylesheet"}
+        %link{rel:"stylesheet" , href:"css/bootstrap.css"}
+        %title Password Studio Blue Labs 
+        %script{src:"js/vendor/modernizr-2.8.3.min.js"}
+        %link{rel: "stylesheet", href:"css/flexboxgrid.min.css"}
+        %link{href:"css/index.css", rel:"stylesheet"}
+    %body
+        .fixed.full-height.full-width.mod-ps.no-margin#1
+            .container-box.principal-grey-bg.box-pass.raleway-font
+                %a{href:"#"} X
+                %br
+                %img.image-account.no-margin{src:"img/icons/add.png"}
+                %p.extra-small.no-margin #7815820
+                %h4.no-margin Facebook
+                %h5.no-margin Usuario@kyklogistics.com
+        .fixed.full-height.full-width#mod-add.no-margin.hidden
+            .container-box.principal-yellow-bg
+                %a#close{href:"#"} X
+                .relative.line-div.principal-black-bg.no-margin.no-padding
+                %form{action:"add.php", method:"POST"}
+                    %label Nombre de cuenta 
+                    %br
+                    %input{type:"text", name:"ndc"}
+                    %br
+                    %label Usuasrio de cuenta
+                    %br
+                    %input{type:"text", name:"ndc"}
+                    %br
+                    %label Password de cuenta
+                    %br
+                    %input{type:"password", name:"ndc"}
+                    %br
+                    %input{type:"submit", name:"ndc"}
+            
+        .fixed#helps.full-height.left.principal-black-bg.help-border
+            -img_icons =[{image:"add.png"},{image:"genpass.png"},{image:"logout.png"}] 
+            .relative.full-height.full-width#icons-container            
+                -img_icons.each  do |icon|
+                    .row.padding-top-1em.border-menu
+                        .col-xs-12.full-width#icons.no-margin.no-padding{style:"background-image:url(img/icons/#{icon[:image]})"}
+
+        .row.menucontainer.fixed.full-width.border-ligth-bottom.principal-black-bg
+            .col-xs-1.no-padding
+                .box
+                    %img#menu-button.middle-xs{src:"img/icons/menu-grey.png"}
+            .col-xs-11.no-padding
+                %nav.navigation.absolute.small.flex-wrap
+                    -menu = ["Passwords","Generar Contraseñas","Ajustes","Cerrar Sesion"]
+                    %ul.list-inline.navigation.raleway-font.white
+                        -menu.each do |item|
+                            %li
+                                %a{}=item
+        .relative#container-info
+            .row#container-style-list.white
+                .relative
+                    .col-xs-4.button-style.principal-pink-bg#lista-button-id
+                        %p Lista
+                    .col-xs-4.button-style.principal-pink-bg#cuadro-button-id
+                        %p Cuadros
+                    .col-xs-4.button-style.principal-pink-bg#grupos-button-id
+                        %p Grupos
+        
+            .row.line-passwords.center-xs
+                .col-xs-12.col-lg-4.col-md-4.seccondary-grey-bg.box-pass.raleway-font#1
+                    %a{href:"#1"} 
+                        %img.image-account.no-margin{src:"img/icons/add.png"}
+                        %p.extra-small.no-margin #7815820
+                        %h4.no-margin Facebook
+                        %h5.no-margin Usuario@kyklogistics.com
+                .col-xs-12.col-lg-4.col-md-4.principal-pink-bg.box-pass#add-box
+                    %a{href:"#"}
+                        %img.image-account.no-margin{src:"img/icons/add.png"}
+    %script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", type:"text/javascript"}
+    %script{src:"js/index.js"}
