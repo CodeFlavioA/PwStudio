@@ -1,6 +1,6 @@
 <?php
+require_once '../backend/sessions_control.php' ;
 include '../backend/databasecon.php' ;
-session_start(); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,19 +27,19 @@ session_start();
                     <span class='input-group-addon'>
                         <span class='glyphicon glyphicon-pencil'></span>
                     </span>
-                    <input class='form-control' name='desc' placeholder='Nombre de cuenta' style='font-family:Arial, FontAwesome' type='text'>
+                    <input class='form-control' name='desc' placeholder='Nombre de cuenta' style='font-family:Arial, FontAwesome' type='text' required>
                 </div>
                 <div class='input-group inputs-add'>
                     <span class='input-group-addon'>
                         <span class='glyphicon glyphicon-user'></span>
                     </span>
-                    <input class='form-control' name='account' placeholder='Usuario' type='text'>
+                    <input class='form-control' name='account' placeholder='Usuario' type='text' required>
                 </div>
                 <div class='input-group inputs-add'>
                     <span class='input-group-addon'>
                         <span class='glyphicon glyphicon-lock'></span>
                     </span>
-                    <input class='form-control' name='pass' placeholder='Password' type='password'>
+                    <input class='form-control' name='pass' placeholder='Password' type='password' required>
                 </div>
                 <input class='send-form relaway-font' name='ndc' type='submit' value='Agregar Cuenta'>
             </form>
@@ -77,7 +77,7 @@ session_start();
                         <a>Ajustes</a>
                     </li>
                     <li>
-                        <a>Cerrar Sesion</a>
+                        <a href="../backend/logout.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </nav>

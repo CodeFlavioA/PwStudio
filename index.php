@@ -1,4 +1,6 @@
 <?php 
+session_start(); 
+if(isset($_SESSION["usuario"])){	header("location: PartyHard/") ;}
 include 'backend/databasecon.php';
 ?>
 <!DOCTYPE html>
