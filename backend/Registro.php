@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'databasecon.php';
 //SE RECIBE ENCRIPTADO DE POST 
 
@@ -17,30 +18,34 @@ include 'databasecon.php';
 if(isset($_GET["xtya"])){ 
     // SI HAY TIPO DE VARIABLE ESTABLECIDO 
     if($_GET["xtya"] == "2"){ // Y ES 2 ENTRA A LA COFIRMACION DE CORREO
-        echo "Valide el xtya 2djkls";
         if(isset($_GET["xtyb"])){
             if($_GET["xtyb"]=="777"){
                 //SE REVISA LA LLAVE
-                echo "Verificada xtya & b";
                 if(isset($_GET["xtka"])){
                     //HACER CONSULTA AL SERVIDOR Y TRAERE LOS DATOS DEL SERVIDOR
-                    echo "xtyk verificado";
                     $KEY = $_GET["xtka"];
                     $Query  = "SELECT * FROM usuarios WHERE RegisterKey  = '$KEY'";
-                    echo "<br>".$Query; 
                     if($reg = mysqli_query($Cx, $Query)){
-                        echo "QUERY REALIZADA";
+                        $Sw =  false; 
                         while($line = mysqli_fetch_array($reg)){
-                            $ksver = $line[1];#LLAVE DEL SERVIDOR
-                            echo "Registro encontrado";
-                            //LLAVE RELACIONADA CON USUARIO:
-                            $usri = $line[1]; #USUARIO DESDE SERVIDOR
-                            if($_GET["xtka"] == $ksver){
-                                //SE ENVIA AL COSO DE CONTRASEÑA: 
-                                header("location: ../PreParty/Validate/?xtka=$ksver");
-                                //KEYALEATORIA (xtka) 
-                                //TIPO (xtya) = 3 [EN HTML]
+                            if($line[3]=="0"){
+                                $Sw = true; 
+                                $ksver = $line[1];#LLAVE DEL SERVIDOR
+                                echo "Registro encontrado";
+                                //LLAVE RELACIONADA CON USUARIO:
+                                $usri = $line[1]; #USUARIO DESDE SERVIDOR
+                                if($_GET["xtka"] == $ksver){
+                                    //SE ENVIA AL COSO DE CONTRASEÑA: 
+                                    header("location: ../PreParty/Validate/?xtka=$ksver");
+                                    //KEYALEATORIA (xtka) 
+                                    //TIPO (xtya) = 3 [EN HTML]
+                                }
                             }
+                           
+                        }
+                        if(!$Sw){
+                            $_SESSION["NOTIFY"] = "Link de registro invalido o caducado, si este problema persiste escriba a: support@bluelabs.com";
+                            header("location: ../Preparty/Notify"); 
                         }
                     }else{
                         echo "No se pudo realizar query by: ". mysqli_error($Cx);
@@ -82,14 +87,12 @@ if(isset($_GET["xtya"])){
                         entre el rango 0 a Numero de letras que tiene la cadena */
                     }
                     require_once 'Email.php'; 
+                    sendMail("",$Email,$cadena);
                     echo $cadena; 
                     if($Cx){
                         echo "conexion realizada";
                         $Query = "INSERT INTO usuarios VALUES('$Email','$cadena','','0','')";
                         if(mysqli_query($Cx,$Query)){
-                            echo "query dada";
-                            session_start();
-                            echo "EMAIL";
                             $_SESSION["NOTIFY"] = "Solo queda un paso para activar tu cuenta!! Verifica tu correo por un link de confirmacion :D";
                         }else{
                             echo "falló la cnexion por motivos: " . mysqli_error($Cx);
@@ -114,7 +117,6 @@ if(isset($_GET["xtya"])){
                 echo "validado pass y xtka";
                 $PASS = $_POST["pass"];
                 $KEY = $_GET["xtka"];
-
                 $opciones = [
                     'cost' => 11,
                 ];

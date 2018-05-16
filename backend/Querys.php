@@ -3,11 +3,60 @@
 include_once "privatekey.php";
 
 function GetRegisterKey($user){
-    GetPrivateKey($user)    ;
+    GetPrivateKey($user);
 }
 
-function getInitialVector($user){
+function getInitialVector($c){
+    
+}
 
+function getDataByEmail($c){
+    $Query = "SELECT * FROM cuentas WHERE Email = $c";
+    $reg = DoQuery($Query);
+    if($reg!=false){
+        return $reg; 
+    }else{
+        return false; 
+    }
+}
+
+function getDataByRegisterKey($c){
+    $Query = "SELECT * FROM cuentas WHERE RegisterKey = '$c'";
+    $reg = DoQuery($Query);
+    if($reg!=false){
+        return $reg; 
+    }else{
+        return false; 
+    }
+}
+
+function getRegisterKeyByUser($c){
+    $Query = "SELECT RegisterKey FROM usuarios WHERE Email = '$c'";
+    $reg = DoQuery($Query);
+    if($reg!=false){
+        $line = mysqli_fetch_array($reg)[0];
+        return $line; 
+    }else{
+        return false; 
+    }
+}
+
+function addPhrase($a,$b){
+    date_default_timezone_set('UTC');
+    $date = date("m.d.y"); 
+    $Query = "INSERT INTO tools VALUES ('$a','$b','$date','')";
+    DoQuery($Query);
+}
+
+function DoQuery($Q){
+    include_once 'databasecon.php';
+    $Cx = mysqli_connect("localhost","root","","bluelabs");
+    if($reg=mysqli_Query($Cx,$Q)){
+            return $reg; 
+    }else{
+            echo mysqli_errno($Cx); 
+            return false;
+        }       
 }
 
 function SaveDataAccounts($d,$c,$a,$b){
@@ -26,7 +75,7 @@ function SaveDataAccounts($d,$c,$a,$b){
 }
 
 function DeleteDataAccount($user,$id){
-    include 'databasecon.php'    ;
+    include 'databasecon.php';
     $Query = "DELETE FROM cuentas WHERE idcuenta = '$id'";
     if(mysqli_query($Cx,$Query)){
         header("location: ../PartyHard/");

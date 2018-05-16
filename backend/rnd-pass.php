@@ -1,5 +1,5 @@
 <?php
-function GenerateRandomPassword($String){
+function GenerateRandomPassword($String,$a){
     $str_ar = explode(" ",$String); //separar palabras
     $DefaultSymbols = "#$%/&()-_.<>";
     $nStr   = ""; 
@@ -16,9 +16,8 @@ function GenerateRandomPassword($String){
     $nStr = str_replace("i","¡",$nStr);
     $nStr = str_replace("o","0",$nStr);
     //FASE 3: CRIPT
-
-    $key = GetPrivateKey($_SESSION["usuario"]);
-    $iv = $_SESSION["usuario"];
+    $key = getPrivateKey($_SESSION["usuario"]);
+    $iv = $a;
     return encrypt($nStr,$key,$iv);
 }
 ?>

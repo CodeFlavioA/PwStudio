@@ -42,7 +42,6 @@ include 'backend/databasecon.php';
 					if($reg = mysqli_query($Cx,$Query)){
 						while($r = mysqli_fetch_array($reg)){
 							if(password_verify($PASS,$r[2])){
-								echo "pass confirmada";
 								session_start(); 
 								$_SESSION["usuario"] = $EMAIL;
 								header("location: PartyHard/");
@@ -50,9 +49,6 @@ include 'backend/databasecon.php';
 								echo "<script>alert(\"Datos incorrectos\")</script>";
 							}
 						}
-					}else
-					{
-						echo "Contraseña incorrecta";
 					}
 				}
 			}

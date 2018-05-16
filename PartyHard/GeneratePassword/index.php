@@ -1,7 +1,18 @@
+<?php
+include '../../backend/sessions_control.php' ;
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <meta content="Come rico en el mejor restaurante de la ciudas" name="description">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta charset="utf-8">
@@ -15,10 +26,38 @@
 </head>
 
 <body>
+<div class='fixed full-height full-width no-margin hidden' id='mod-add'>
+        <div class='container-box principal-grey-bg' id='box-add'>
+            <a class='delete-button white' href='' id='close'>X</a>
+            <br>
+            <form action='../backend/AdC.php' method='POST'>
+                <br>
+                <div class='input-group inputs-add'>
+                    <span class='input-group-addon'>
+                        <span class='glyphicon glyphicon-pencil'></span>
+                    </span>
+                    <input class='form-control' name='desc' placeholder='Nombre de cuenta' style='font-family:Arial, FontAwesome' type='text' required>
+                </div>
+                <div class='input-group inputs-add'>
+                    <span class='input-group-addon'>
+                        <span class='glyphicon glyphicon-user'></span>
+                    </span>
+                    <input class='form-control' name='account' placeholder='Usuario' type='text' required>
+                </div>
+                <div class='input-group inputs-add'>
+                    <span class='input-group-addon'>
+                        <span class='glyphicon glyphicon-lock'></span>
+                    </span>
+                    <input class='form-control' name='pass' placeholder='Password'  id='pw'  type='password' equired>
+                </div>
+                <input class='send-form relaway-font' name='ndc' type='submit' value='Agregar Cuenta'>
+            </form>
+        </div>
+    </div>
     <div class="fixed full-height left principal-black-bg help-border" id="helps">
         <div class="relative full-height full-width" id="icons-container">
             <div class="row padding-top-1em border-menu">
-                <div class="col-xs-12 full-width no-margin no-padding icons" id="icons" style="background-image:url(../../img/icons/add.png)"></div>
+                <div class="col-xs-12 full-width no-margin no-padding icons" id="iconsA" style="background-image:url(../../img/icons/add.png)"></div>
             </div>
             <div class="row padding-top-1em border-menu">
                 <div class="col-xs-12 full-width no-margin no-padding icons" id="iconG" style="background-image:url(../../img/icons/genpass.png)"></div>
@@ -38,7 +77,7 @@
             <nav class="navigation absolute small flex-wrap">
                 <ul class="list-inline navigation raleway-font white">
                     <li>
-                        <a>Passwords</a>
+                        <a href="../">Passwords</a>
                     </li>
                     <li>
                         <a href = "#">Generar Contraseñas</a>
@@ -47,7 +86,7 @@
                         <a>Ajustes</a>
                     </li>
                     <li>
-                        <a>Cerrar Sesion</a>
+                        <a href="../../backend/logout.php">Cerrar Sesion</a>
                     </li>
                 </ul>
             </nav>
@@ -64,7 +103,7 @@
         </div>
         <div class="row center-xs" id="input-space">
             <form method="post" action= "../../backend/generateP.php?xtyb=832">
-                <input name= "xtka" class="form-control relative" placeholder="Escribe lo que se te ocurra" type="text">
+                <input name= "xtka" class="form-control relative" placeholder="Escribe lo que se te ocurra" type="text" autocomplete="off">
                 <span class="help-block">aleatoriamente crearemos una contraseña para ti, segura y confiable con algoritmos avanzados de encriptacion a partir del texto que ingresaste</span>
                 <button name = "generateBtn"class="btn btn-success relative" type="submit">Generar Password Segura</button>
             </form>

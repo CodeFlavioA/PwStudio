@@ -6,6 +6,14 @@ include '../backend/databasecon.php' ;
 <html>
 
 <head>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <meta content='' name='description'>
     <meta content='width=device-width, initial-scale=1' name='viewport'>
     <meta charset='utf-8'>
@@ -17,7 +25,7 @@ include '../backend/databasecon.php' ;
     <link href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet'>
     <link href='../css/index.css' rel='stylesheet'>
 </head>
-<div class='fixed full-height full-width no-margin hidden' id='mod-add'>
+    <div class='fixed full-height full-width no-margin hidden' id='mod-add'>
         <div class='container-box principal-grey-bg' id='box-add'>
             <a class='delete-button white' href='' id='close'>X</a>
             <br>
@@ -48,7 +56,7 @@ include '../backend/databasecon.php' ;
     <div class='fixed full-height left principal-black-bg help-border' id='helps'>
         <div class='relative full-height full-width' id='icons-container'>
             <div class='row padding-top-1em border-menu'  id="addmenubutton">
-                <div class='col-xs-12 full-width no-margin no-padding icons' id='icons' style='background-image:url(../img/icons/add.png)'></div>
+                <div class='col-xs-12 full-width no-margin no-padding icons' id='iconsA' style='background-image:url(../img/icons/add.png)'></div>
             </div>
             <div class='row padding-top-1em border-menu'>
                 <div class='col-xs-12 full-width no-margin no-padding icons' id='iconG' style='background-image:url(../img/icons/genpass.png)'></div>
@@ -68,7 +76,7 @@ include '../backend/databasecon.php' ;
             <nav class='navigation absolute small flex-wrap'>
                 <ul class='list-inline navigation raleway-font white'>
                     <li>
-                        <a>Passwords</a>
+                        <a href="#">Passwords</a>
                     </li>
                     <li>
                         <a href = "GeneratePassword/">Generar Contraseñas</a>
